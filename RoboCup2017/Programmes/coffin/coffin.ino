@@ -7,6 +7,7 @@ const int LEDS = 17; //pin to turn on lights
 const int trig = 16, echo = 19;
 const float unit_division_factor = 58;
 unsigned long distance = 0;
+boolean objectDetected;
 
 void openDoor(int timeToWait=0) { //open coffin door
 	for(int x=0; x<=100; x++) {
@@ -34,6 +35,16 @@ void ledFlash(int timeToWait) {
         digitalWrite(LEDS, LOW);
 }
 
+void readUltrasonic() { //read from ultrasonic sensor
+        digitalWrite(trig, LOW);
+        delayMicroseconds(10);
+	digitalWrite(trig, HIGH);
+	distance = pulseIn(echo, HIGH, 20000) / unit_division_factor; 
+	Serial.print("Distance: ");
+	Serial.println(distance);
+	delay(50);
+}
+
 void setup() { //set up LEDs and servo motor
 	servo.attach(8);
 	pinMode(LEDS, OUTPUT); digitalWrite(LEDS, LOW);
@@ -58,15 +69,16 @@ void setup() { //set up LEDs and servo motor
 
 void loop() {
         distance = 0;
-	while(distance > 30 || distance == 0) { //wait until something comes near the ultrasonic sensor (e.g. my hand)
-		digitalWrite(trig, LOW);
-                delayMicroseconds(10);
-		digitalWrite(trig, HIGH);
-		distance = pulseIn(echo, HIGH, 20000) / unit_division_factor;  //read from ultrasonic sensor
-		Serial.print("Distance: ");
-		Serial.println(distance);
-		delay(50);
-	}
+        objectDetected = false;
+        while(!objectDetected) {
+                readUltrasonic();
+                if(distance < 30 && distance > 0) {
+                        readUltrasonic();
+                        if(distance < 30 && distance > 0) {
+                              objectDetected = true;  
+                        }        
+                } 
+        }
 	Serial.println("Object Detected");
 	openDoor(1000); Serial.println("open");
 	ledFlash(3000);

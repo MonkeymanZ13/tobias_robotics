@@ -1,0 +1,4 @@
+Crane Robot:
+The Crane Robot can pick up and drop chocolates with its claw and arm. It also has tracks so that it can move around the board.
+
+During the performance the Crane Robot follows a line which leads to a big box of chocolates. The Crane Robot picks up a chocolate and continues following the line onto the ramp. At the top of the ramp it drops the chocolate into another box full of chocolates. It continues following the line down the other side of the ramp until the boing in the music, where the robots start going crazy. The Crane Robot goes forwards and backwards a couple of times, then does a 360 degree turn while still on the ramp. It follows the line off the ramp, then reverses to the other side of the original box of chocolates. It ends with its open claw in the box of chocolates.

@@ -1,0 +1,4 @@
+Forklift:
+The Forklift can pick up pallets full of chocolate with its forklift mechanism. It also has a concertina mechanism which goes up and down. It has two wheels which it uses to get around the board.
+
+During the performance the Forklift picks up a pallet and drops it off in a different section of the board. It then comes back for the second pallet and picks it up. When the Forklift goes crazy, the concertina mechanism goes up and down at random times. The forklift mechanism goes up and down while the pallet is still on it. Forklift moves down the board in a crazy zigzag way. (Left, then right, then left, then right.) It then finds a line which it follows, then smashes into a stack of crates.

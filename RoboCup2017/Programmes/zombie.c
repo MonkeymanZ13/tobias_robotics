@@ -50,7 +50,7 @@ void axeSwing(int duration, int timeToWait=0) { //swing axe up and down for cert
 
 //shoot
 void shoot(int timeToWait=0) { //shoot a ball
-	motor[shooter] = 75;
+	motor[shooter] = 100;
 	sleep(1000);
 	motor[shooter] = 0;
 	sleep(timeToWait);

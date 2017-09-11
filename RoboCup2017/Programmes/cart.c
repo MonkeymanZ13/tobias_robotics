@@ -27,23 +27,12 @@ void drive(int leftSpeed, int rightSpeed, int duration, int timeToWait=0) { //tu
 	off(timeToWait);
 }
 
-void followToRed(int timeToWait=0) { //follow black line on the right side until it sees red
+void followToRed(int leftSpeed=35, int rightSpeed=5, int timeToWait=0) { //follow black line on the right side until it sees red
 	while(col != "Red") {
 		if(col == "Black") {
-			on(35,5);
+			on(leftSpeed,rightSpeed);
 		} else {
-			on(5,35);
-		}
-	}
-	off(timeToWait);
-}
-
-void followToRedLeft(int timeToWait=0) { //follow black line on the left side until it sees red
-	while(col != "Red") {
-		if(col == "Grey") {
-			on(35,5);
-		} else {
-			on(5,35);
+			on(rightSpeed,leftSpeed);
 		}
 	}
 	off(timeToWait);
@@ -99,9 +88,9 @@ task main() {
 	startTask(stopButton);
 
 	//go to tombstone
-	followToRed(1500);
+	followToRed(35,5,1500);
 	armWaveDuration = 3000;	startTask(waveArms);
-	drive(-50,50,200);
+	drive(-50,50,300);
 
 	//find next line
 	on(-40,-40);
@@ -117,20 +106,20 @@ task main() {
 	off();
 
 	//go to coffin
-	followToRed(500);
+	followToRed(35,5,500);
 	startTask(waveArms);
 	on(40,0);
 
 	sleep(750);
 	while(col == "Grey") {}
+	while(col == "Black") {}
 
 	//go up ramp
-	on(35,5);
-	while(col != "Black") {}
-	on(-35,35);
+	on(-30,30);
+	while(col == "Grey") {}
+	off();
 
-	while(col != "Grey") {}
-	followToRedLeft(500);
+	followToRed(35,5,500);
 	on(30,-30);
 
 	while(col != "Grey") {}
@@ -138,7 +127,7 @@ task main() {
 
 	//come down ramp
 	armWaveDuration = 10000; startTask(waveArms);
-	followToRed(500);
+	followToRed(30,0,500);
 	on(30,0);
 	while(col != "Grey") {}
 	while(col != "Red") {}
@@ -147,7 +136,7 @@ task main() {
 	//go to spiders
 	drive(50,50,5000);
 	armWaveDuration = 1000;
-	repeat(3) {
+	repeat(2) {
 		armSpeed = -70; startTask(waveArms);
 		drive(-50,-50,1000);
 		armSpeed = 70; startTask(waveArms);
@@ -169,8 +158,8 @@ task main() {
 
 	while(col != "Black") {}
 	while(col != "Grey") {}
-	followLine(7500);
+	followLine(7000);
 
-	armWaveDuration = 3500;	startTask(waveArms);
-	drive(100,-100,3500);
+	armWaveDuration = 3000;	startTask(waveArms);
+	drive(100,-100,3000);
 }

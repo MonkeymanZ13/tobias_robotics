@@ -122,7 +122,7 @@ task main() {
 
 	skate(20,10,2);
 	skate(-20,-10,2);
-	sleep(1500);
+	sleep(2500);
 
 	skate(20,10,2);
 	drive(30,-30,800);

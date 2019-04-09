@@ -1,4 +1,4 @@
-const int MOTOR_1_A = 3, MOTOR_1_B = 5; //variables to store the pins for each motor
+const int MOTOR_1_A = 2, MOTOR_1_B = 3; //variables to store the pins for each motor
 const int MOTOR_2_A = 6, MOTOR_2_B = 9;
 const int MOTOR_3_A = 10, MOTOR_3_B = 11;
 const int CAROUSEL_A = 12, CAROUSEL_B = 13;
